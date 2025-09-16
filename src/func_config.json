@@ -1,0 +1,22 @@
+{
+  "main": {
+    "root_dir": "motivation_example",
+    "function_name": "foo",
+    "debug": true,
+    "only_loop": false,
+    "list_loop": false,
+    "auto_annotation": true,
+    "refine_count": 3,
+    "pass_count": 5,
+    "think": true,
+    "template": true,
+    "auto_post": true,
+    "use_db": true
+  },
+  "llm": {
+    "api_model": "gpt-4o"
+  },
+  "preconditions": {
+    "foo": "emp"
+  }
+}
