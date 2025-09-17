@@ -1,33 +1,33 @@
-2025-09-17 10:38:44,351 - INFO  - 
+2025-09-17 15:49:18,880 - INFO  - 
 🚀 Starting analysis of function: foo
-2025-09-17 10:38:44,352 - INFO  - 
+2025-09-17 15:49:18,880 - INFO  - 
 FUNCTION INITIALIZATION
-2025-09-17 10:38:44,352 - INFO  - ==================================================
+2025-09-17 15:49:18,880 - INFO  - ==================================================
 
-2025-09-17 10:38:44,363 - INFO  - Initial pending functions: ['foo', 'CheckCalFun']
-2025-09-17 10:38:44,363 - INFO  - Now processing function CheckCalFun
+2025-09-17 15:49:18,944 - INFO  - Initial pending functions: ['foo', 'CheckCalFun']
+2025-09-17 15:49:18,944 - INFO  - Now processing function CheckCalFun
 
-2025-09-17 10:38:44,366 - INFO  - 
+2025-09-17 15:49:18,947 - INFO  - 
 GENERATE ANNOTATION FOR CheckCalFun
-2025-09-17 10:38:44,366 - INFO  - ==================================================
+2025-09-17 15:49:18,947 - INFO  - ==================================================
 
-2025-09-17 10:38:44,366 - INFO  - Function CheckCalFun has been initialized
-2025-09-17 10:38:44,367 - INFO  - Starting to generate annotation code for CheckCalFun
-2025-09-17 10:38:44,404 - INFO  - 
+2025-09-17 15:49:18,947 - INFO  - Function CheckCalFun has been initialized
+2025-09-17 15:49:18,948 - INFO  - Starting to generate annotation code for CheckCalFun
+2025-09-17 15:49:19,003 - INFO  - 
 GENERATE LOOP INVARIANT FOR CheckCalFun
-2025-09-17 10:38:44,404 - INFO  - ==================================================
+2025-09-17 15:49:19,003 - INFO  - ==================================================
 
-2025-09-17 10:38:44,492 - INFO  - Variable Maps:[{'chksum': '0', 'i': '0', 'pIp': 'pIp@pre', 'pIp@pre->len': 'pIp_len', 'pIp@pre->chksum': 'pIp_chksum'}]
-2025-09-17 10:38:44,492 - INFO  - Path conditions: [None]
-2025-09-17 10:38:44,492 - INFO  - Pre condition: (chksum == 0) * (i == 0) * (pIp == pIp@pre) * store_int_array(&pIp@pre->pkv, 10, pIp_pkv_l) * (pIp@pre->len == pIp_len) * (pIp@pre->chksum == pIp_chksum)
-2025-09-17 10:38:44,493 - INFO  - Loop Condition: i < pIp->len
-2025-09-17 10:38:44,493 - INFO  - Array Names: ['pIp->pkv']
-2025-09-17 10:38:44,493 - INFO  - Updated Loop Conditions: ['0 < pIp@pre->len']
-2025-09-17 10:38:44,494 - INFO  - Global Unchanged Variables: ['pIp', 'pIp@pre->len', 'pIp@pre->chksum']
-2025-09-17 10:38:44,495 - INFO  - Non Inductive Variables: []
-2025-09-17 10:38:44,495 - INFO  - Unchanged Arrays (Read-only): ['pIp->pkv']
-2025-09-17 10:39:01,091 - INFO  - examples:
-2025-09-17 10:39:01,092 - INFO  - 
+2025-09-17 15:49:19,106 - INFO  - Variable Maps:[{'chksum': '0', 'i': '0', 'pIp': 'pIp@pre', 'pIp@pre->len': 'pIp_len', 'pIp@pre->chksum': 'pIp_chksum'}]
+2025-09-17 15:49:19,107 - INFO  - Path conditions: [None]
+2025-09-17 15:49:19,107 - INFO  - Pre condition: (chksum == 0) * (i == 0) * (pIp == pIp@pre) * store_int_array(&pIp@pre->pkv, 10, pIp_pkv_l) * (pIp@pre->len == pIp_len) * (pIp@pre->chksum == pIp_chksum)
+2025-09-17 15:49:19,107 - INFO  - Loop Condition: i < pIp->len
+2025-09-17 15:49:19,108 - INFO  - Array Names: ['pIp->pkv']
+2025-09-17 15:49:19,108 - INFO  - Updated Loop Conditions: ['0 < pIp@pre->len']
+2025-09-17 15:49:19,109 - INFO  - Global Unchanged Variables: ['pIp', 'pIp@pre->len', 'pIp@pre->chksum']
+2025-09-17 15:49:19,109 - INFO  - Non Inductive Variables: []
+2025-09-17 15:49:19,110 - INFO  - Unchanged Arrays (Read-only): ['pIp->pkv']
+2025-09-17 15:49:51,262 - INFO  - examples:
+2025-09-17 15:49:51,262 - INFO  - 
 Examples:
 You must use these follow examples as a reference to complete the task, with the following requirements:
     - You may use the invariant generation logic from these examples as a guide for your own invariant.
@@ -142,10 +142,10 @@ The `integer sum(int* array, integer begin, integer end)` function precisely cal
 
     ```
 
-2025-09-17 10:39:32,564 - INFO  - ACSL format loop invariant
-2025-09-17 10:39:32,564 - INFO  - /*@ 
-          loop invariant (0 < \at(pIp,Pre)->len) ==> (0 <= i <= \at(pIp,Pre)->len);
-          loop invariant (0 < \at(pIp,Pre)->len) ==> (chksum == sum(&pIp->pkv[0], 0, i));
+2025-09-17 15:50:31,015 - INFO  - ACSL format loop invariant
+2025-09-17 15:50:31,015 - INFO  - /*@ 
+          loop invariant (0 < \at(pIp,Pre)->len) ==> (0 <= i <= pIp->len);
+          loop invariant (0 < \at(pIp,Pre)->len) ==> (chksum == sum(&(pIp->pkv[0]), 0, i));
           loop invariant (!(0 < \at(pIp,Pre)->len)) ==> ((chksum == 0)&&(i == 0)&&(pIp == \at(pIp,Pre))&&(\at(pIp,Pre)->len == \at(pIp->len,Pre))&&(\at(pIp,Pre)->chksum == \at(pIp->chksum,Pre)));
           loop invariant pIp == \at(pIp,Pre);
           loop invariant \at(pIp,Pre)->len == \at(pIp->len,Pre);
@@ -156,12 +156,12 @@ The `integer sum(int* array, integer begin, integer end)` function precisely cal
         for (; i < pIp->len; i++){
             chksum = chksum + pIp->pkv[i];
         }
-2025-09-17 10:39:32,565 - INFO  - VST format loop invariant
-2025-09-17 10:39:32,566 - INFO  - /*@ Inv
+2025-09-17 15:50:31,017 - INFO  - VST format loop invariant
+2025-09-17 15:50:31,017 - INFO  - /*@ Inv
     exists  pIp_pkv_l,    
     store_int_array(pIp->pkv, 10, pIp_pkv_l) &&
-    ((0 < pIp@pre->len) => (0 <= i && i <= pIp@pre->len)) &&
-((0 < pIp@pre->len) => (chksum == sum(&pIp_pkv_l[0], 0, i))) &&
+    ((0 < pIp@pre->len) => (0 <= i && i <= pIp->len)) &&
+((0 < pIp@pre->len) => (chksum == sum(&(pIp_pkv_l[0]), 0, i))) &&
 ((!(0 < pIp@pre->len)) => ((chksum == 0)&&(i == 0)&&(pIp == pIp@pre)&&(pIp@pre->len == pIp_len)&&(pIp@pre->chksum == pIp_chksum))) &&
 (pIp == pIp@pre) &&
 (pIp@pre->len == pIp_len) &&
@@ -173,9 +173,9 @@ The `integer sum(int* array, integer begin, integer end)` function precisely cal
         for (; i < pIp->len; i++){
             chksum = chksum + pIp_pkv[i];
         }
-2025-09-17 10:39:32,566 - INFO  - PARTIAL CORRECT INVARIANT
-2025-09-17 10:39:32,566 - INFO  - continue symbolic execution
-2025-09-17 10:39:32,566 - INFO  - 
+2025-09-17 15:50:31,017 - INFO  - PARTIAL CORRECT INVARIANT
+2025-09-17 15:50:31,017 - INFO  - continue symbolic execution
+2025-09-17 15:50:31,017 - INFO  - 
 typedef struct __CheckCal
 {
         int pkv[10];
@@ -194,15 +194,15 @@ typedef struct __CheckCal
     requires \valid(pIp->pkv + (0..9));
     requires \forall integer i; 0 <= i < 10 ==> 0 <= pIp->pkv[i] <= 100;
     requires pIp->len <= 10;
-*/
-
+    */
+    
 void CheckCalFun(CheckCal *pIp){
         int i = 0;
         int chksum = 0;
 
         /*@ 
-          loop invariant (0 < \at(pIp,Pre)->len) ==> (0 <= i <= \at(pIp,Pre)->len);
-          loop invariant (0 < \at(pIp,Pre)->len) ==> (chksum == sum(&pIp->pkv[0], 0, i));
+          loop invariant (0 < \at(pIp,Pre)->len) ==> (0 <= i <= pIp->len);
+          loop invariant (0 < \at(pIp,Pre)->len) ==> (chksum == sum(&(pIp->pkv[0]), 0, i));
           loop invariant (!(0 < \at(pIp,Pre)->len)) ==> ((chksum == 0)&&(i == 0)&&(pIp == \at(pIp,Pre))&&(\at(pIp,Pre)->len == \at(pIp->len,Pre))&&(\at(pIp,Pre)->chksum == \at(pIp->chksum,Pre)));
           loop invariant pIp == \at(pIp,Pre);
           loop invariant \at(pIp,Pre)->len == \at(pIp->len,Pre);
@@ -217,80 +217,80 @@ void CheckCalFun(CheckCal *pIp){
         pIp->chksum = chksum;
 }
 
-2025-09-17 10:39:34,032 - INFO  - CORRECT INVARIANT
-2025-09-17 10:39:34,032 - INFO  - 
+2025-09-17 15:50:32,480 - INFO  - CORRECT INVARIANT
+2025-09-17 15:50:32,480 - INFO  - 
 GENERATE FUNCTION SPECIFICATION FOR CheckCalFun
-2025-09-17 10:39:34,032 - INFO  - ==================================================
+2025-09-17 15:50:32,480 - INFO  - ==================================================
 
-2025-09-17 10:39:34,060 - INFO  - Starting to generate ACSL specification for CheckCalFun
-2025-09-17 10:39:49,014 - INFO  - syntax Correct
-2025-09-17 10:39:53,905 - INFO  - Loop Invariant:
-2025-09-17 10:39:53,905 - INFO  - [True, True, True, True, True, True, True]
-2025-09-17 10:39:53,905 - INFO  - 
-2025-09-17 10:39:53,905 - INFO  - Assertion:
-2025-09-17 10:39:53,905 - INFO  - [True, True]
-2025-09-17 10:39:53,906 - INFO  - 
-2025-09-17 10:39:53,906 - INFO  - Post Condition:
-2025-09-17 10:39:53,906 - INFO  - [True]
-2025-09-17 10:39:53,906 - INFO  - 
-2025-09-17 10:39:53,909 - INFO  - 
+2025-09-17 15:50:32,508 - INFO  - Starting to generate ACSL specification for CheckCalFun
+2025-09-17 15:50:58,741 - INFO  - syntax Correct
+2025-09-17 15:51:03,569 - INFO  - Loop Invariant:
+2025-09-17 15:51:03,569 - INFO  - [True, True, True, True, True, True, True]
+2025-09-17 15:51:03,569 - INFO  - 
+2025-09-17 15:51:03,569 - INFO  - Assertion:
+2025-09-17 15:51:03,569 - INFO  - [True, True]
+2025-09-17 15:51:03,569 - INFO  - 
+2025-09-17 15:51:03,569 - INFO  - Post Condition:
+2025-09-17 15:51:03,570 - INFO  - [True, True, True]
+2025-09-17 15:51:03,570 - INFO  - 
+2025-09-17 15:51:03,573 - INFO  - 
 GENERATE ANNOTATION FOR foo
-2025-09-17 10:39:53,909 - INFO  - ==================================================
+2025-09-17 15:51:03,573 - INFO  - ==================================================
 
-2025-09-17 10:39:53,909 - INFO  - Function foo has been initialized
-2025-09-17 10:39:53,909 - INFO  - Starting to generate annotation code for foo
-2025-09-17 10:39:53,934 - INFO  - 
+2025-09-17 15:51:03,573 - INFO  - Function foo has been initialized
+2025-09-17 15:51:03,573 - INFO  - Starting to generate annotation code for foo
+2025-09-17 15:51:03,602 - INFO  - 
 GENERATE FUNCTION SPECIFICATION FOR foo
-2025-09-17 10:39:53,934 - INFO  - ==================================================
+2025-09-17 15:51:03,602 - INFO  - ==================================================
 
-2025-09-17 10:39:53,964 - INFO  - Starting to generate ACSL specification for foo
-2025-09-17 10:40:02,170 - INFO  - syntax Correct
-2025-09-17 10:40:07,095 - INFO  - Loop Invariant:
-2025-09-17 10:40:07,096 - INFO  - [True, True, True, True, True, True, True]
-2025-09-17 10:40:07,096 - INFO  - 
-2025-09-17 10:40:07,096 - INFO  - Assertion:
-2025-09-17 10:40:07,096 - INFO  - [True, True, True]
-2025-09-17 10:40:07,096 - INFO  - 
-2025-09-17 10:40:07,096 - INFO  - Post Condition:
-2025-09-17 10:40:07,096 - INFO  - [True]
-2025-09-17 10:40:07,096 - INFO  - 
-2025-09-17 10:40:07,096 - INFO  - Instance:
-2025-09-17 10:40:07,097 - INFO  - [True, True, True, True]
-2025-09-17 10:40:07,097 - INFO  - 
-2025-09-17 10:40:07,097 - INFO  - 
+2025-09-17 15:51:03,630 - INFO  - Starting to generate ACSL specification for foo
+2025-09-17 15:51:11,661 - INFO  - syntax Correct
+2025-09-17 15:51:16,553 - INFO  - Loop Invariant:
+2025-09-17 15:51:16,553 - INFO  - [True, True, True, True, True, True, True]
+2025-09-17 15:51:16,553 - INFO  - 
+2025-09-17 15:51:16,553 - INFO  - Assertion:
+2025-09-17 15:51:16,553 - INFO  - [True, True, True]
+2025-09-17 15:51:16,553 - INFO  - 
+2025-09-17 15:51:16,553 - INFO  - Post Condition:
+2025-09-17 15:51:16,553 - INFO  - [True, True, True]
+2025-09-17 15:51:16,553 - INFO  - 
+2025-09-17 15:51:16,553 - INFO  - Instance:
+2025-09-17 15:51:16,553 - INFO  - [True, True, True, True]
+2025-09-17 15:51:16,553 - INFO  - 
+2025-09-17 15:51:16,554 - INFO  - 
 SPECIFICATION FOR foo
-2025-09-17 10:40:07,097 - INFO  - ==================================================
+2025-09-17 15:51:16,554 - INFO  - ==================================================
 
-2025-09-17 10:40:07,097 - INFO  - 
+2025-09-17 15:51:16,554 - INFO  - 
 VST Specification for function foo:
 /*@
 With pIp_pkv_l pIp_len pIp_chksum
 Require store_int_array(pIp->pkv,10, pIp_pkv_l) && pIp->len == pIp_len && pIp->chksum == pIp_chksum
 Ensure emp
 */
-2025-09-17 10:40:07,292 - INFO  - 
+2025-09-17 15:51:16,756 - INFO  - 
 VERIFICATION FOR foo
-2025-09-17 10:40:07,293 - INFO  - ==================================================
+2025-09-17 15:51:16,757 - INFO  - ==================================================
 
-2025-09-17 10:40:07,293 - INFO  - TRY TIME: 0
-2025-09-17 10:40:15,452 - INFO  - syntax Correct
-2025-09-17 10:40:20,479 - INFO  - Loop Invariant:
-2025-09-17 10:40:20,479 - INFO  - [True, True, True, True, True, True, True]
-2025-09-17 10:40:20,479 - INFO  - 
-2025-09-17 10:40:20,479 - INFO  - Assertion:
-2025-09-17 10:40:20,479 - INFO  - [True, True, True]
-2025-09-17 10:40:20,479 - INFO  - 
-2025-09-17 10:40:20,479 - INFO  - Post Condition:
-2025-09-17 10:40:20,479 - INFO  - [True]
-2025-09-17 10:40:20,479 - INFO  - 
-2025-09-17 10:40:20,479 - INFO  - Instance:
-2025-09-17 10:40:20,480 - INFO  - [True, True, True, True]
-2025-09-17 10:40:20,480 - INFO  - 
-2025-09-17 10:40:20,480 - INFO  - 
+2025-09-17 15:51:16,757 - INFO  - TRY TIME: 0
+2025-09-17 15:51:24,739 - INFO  - syntax Correct
+2025-09-17 15:51:29,663 - INFO  - Loop Invariant:
+2025-09-17 15:51:29,663 - INFO  - [True, True, True, True, True, True, True]
+2025-09-17 15:51:29,663 - INFO  - 
+2025-09-17 15:51:29,663 - INFO  - Assertion:
+2025-09-17 15:51:29,663 - INFO  - [True, True, True]
+2025-09-17 15:51:29,664 - INFO  - 
+2025-09-17 15:51:29,664 - INFO  - Post Condition:
+2025-09-17 15:51:29,664 - INFO  - [True, True, True]
+2025-09-17 15:51:29,664 - INFO  - 
+2025-09-17 15:51:29,664 - INFO  - Instance:
+2025-09-17 15:51:29,664 - INFO  - [True, True, True, True]
+2025-09-17 15:51:29,664 - INFO  - 
+2025-09-17 15:51:29,664 - INFO  - 
 🎯 FINAL SPECIFICATION FOR foo
-2025-09-17 10:40:20,480 - INFO  - ==================================================
-2025-09-17 10:40:20,480 - INFO  - Output path: output/motivation_example/foo.c
-2025-09-17 10:40:20,480 - INFO  - Output file content:
+2025-09-17 15:51:29,664 - INFO  - ==================================================
+2025-09-17 15:51:29,664 - INFO  - Output path: output/motivation_example/foo.c
+2025-09-17 15:51:29,664 - INFO  - Output file content:
 
 
 
@@ -312,17 +312,18 @@ typedef struct __CheckCal
     requires \valid(pIp->pkv + (0..9));
     requires \forall integer i; 0 <= i < 10 ==> 0 <= pIp->pkv[i] <= 100;
     requires pIp->len <= 10;
-    ensures pIp->chksum == sum(&pIp->pkv[0], 0, pIp->len);
+    ensures pIp->chksum == sum(&(pIp->pkv[0]), 0, pIp->len);
+    ensures \forall integer j; 0 <= j < 10 ==> pIp->pkv[j] == \at(pIp->pkv[j],Pre);
+    ensures pIp->len == \at(pIp->len,Pre);
     assigns pIp->chksum;
 */
-
 void CheckCalFun(CheckCal *pIp){
         int i = 0;
         int chksum = 0;
 
         /*@ 
-          loop invariant (0 < \at(pIp,Pre)->len) ==> (0 <= i <= \at(pIp,Pre)->len);
-          loop invariant (0 < \at(pIp,Pre)->len) ==> (chksum == sum(&pIp->pkv[0], 0, i));
+          loop invariant (0 < \at(pIp,Pre)->len) ==> (0 <= i <= pIp->len);
+          loop invariant (0 < \at(pIp,Pre)->len) ==> (chksum == sum(&(pIp->pkv[0]), 0, i));
           loop invariant (!(0 < \at(pIp,Pre)->len)) ==> ((chksum == 0)&&(i == 0)&&(pIp == \at(pIp,Pre))&&(\at(pIp,Pre)->len == \at(pIp->len,Pre))&&(\at(pIp,Pre)->chksum == \at(pIp->chksum,Pre)));
           loop invariant pIp == \at(pIp,Pre);
           loop invariant \at(pIp,Pre)->len == \at(pIp->len,Pre);
@@ -350,10 +351,10 @@ void foo(CheckCal *pIp)
     CheckCalFun(pIp);
     /*@ assert pIp->chksum == pIp->pkv[0] + pIp->pkv[1] + pIp->pkv[2]; */
 }
-2025-09-17 10:40:20,480 - INFO  - ==================================================
-2025-09-17 10:40:20,480 - INFO  - first_pass:
-2025-09-17 10:40:20,480 - INFO  - syntax=1, valid=1,satisfy=1
-2025-09-17 10:40:20,480 - INFO  - ==================================================
-2025-09-17 10:40:20,480 - INFO  - ⏰ OVERALL EXECUTION TIME STATISTICS
-2025-09-17 10:40:20,481 - INFO  - Total execution time: 96.13 seconds (1.60 minutes)
-2025-09-17 10:40:20,481 - INFO  - ==================================================
+2025-09-17 15:51:29,665 - INFO  - ==================================================
+2025-09-17 15:51:29,665 - INFO  - first_pass:
+2025-09-17 15:51:29,665 - INFO  - syntax=1, valid=1,satisfy=1
+2025-09-17 15:51:29,665 - INFO  - ==================================================
+2025-09-17 15:51:29,665 - INFO  - ⏰ OVERALL EXECUTION TIME STATISTICS
+2025-09-17 15:51:29,665 - INFO  - Total execution time: 130.78 seconds (2.18 minutes)
+2025-09-17 15:51:29,665 - INFO  - ==================================================

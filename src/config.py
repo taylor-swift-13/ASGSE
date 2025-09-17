@@ -33,7 +33,7 @@ class MainConfig:
     debug:bool = True
     generlization:bool = False
     only_loop:bool = True 
-    list_loop:bool = False
+    recursive_loop:bool = False
 
     # T: Use input_dir as the only input
     # F: Use input_dir and preconditions as input
@@ -56,8 +56,8 @@ class LLMConfig:
     # API model configuration
     use_api_model = True # Control whether to use API model or local Transformers model
     api_model:str = "gpt-4o" # API model name, e.g., "gpt-4o"
-    api_key:str = "your_api_key"
-    base_url:str = "your_base_url"
+    api_key:str = "sk-9dnxPHHwjlTiAlH0uUoKwiW79Hs51AGpqUSRj9DvZurLZx1R"
+    base_url:str = "https://yunwu.ai/v1"
     api_temperature = 0.7 # Temperature parameter for API calls
     api_top_p=0.7
     think_mode_enabled = False

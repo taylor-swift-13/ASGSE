@@ -1020,8 +1020,8 @@ class InvGenerator:
     def get_examples(self,loop_code):
 
         query = self.query_llm.chat(f'Please brief explain what the following code do: {loop_code}')
-        if self.config.list_loop:
-            results = search_and_return(self.vector_db, query=query,target_category='loop invariant',target_type='list')
+        if self.config.recursive_loop:
+            results = search_and_return(self.vector_db, query=query,target_category='loop invariant',target_type='recursive')
         else:
             results = search_and_return(self.vector_db, query=query,target_category='loop invariant')
             
@@ -1199,7 +1199,7 @@ You must use these follow examples as a reference to complete the task, with the
             else:
                 simple = True
 
-            if self.config.list_loop:
+            if self.config.recursive_loop:
                 annotations_list = [annotations_list[0]]
             
             for i,annotations in enumerate(annotations_list):
@@ -1208,9 +1208,6 @@ You must use these follow examples as a reference to complete the task, with the
                 with open(output_c_file_path, 'w', encoding='utf-8') as file:
                     file.write(annotations)
                 annotations_list[i] = self.spec_gen.create_general_template_file()
-
-
-
      
             
 
@@ -1221,7 +1218,7 @@ You must use these follow examples as a reference to complete the task, with the
                 user_prompt = self.get_simgen_prompt(annotations_list[0])
                 annotations_list[0] = self.get_annotations(user_prompt)
 
-            elif self.config.list_loop:
+            elif self.config.recursive_loop:
 
                 if self.config.use_db:
                     examples = self.get_examples(loop_content)

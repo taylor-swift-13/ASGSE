@@ -43,7 +43,7 @@ class ConfigLoader:
         config.function_name = main_config.get('function_name')
         config.debug = main_config.get('debug', config.debug)
         config.only_loop = main_config.get('only_loop', config.only_loop)
-        config.list_loop = main_config.get('list_loop', config.list_loop)
+        config.recursive_loop = main_config.get('recursive_loop', config.recursive_loop)
         config.auto_annotation = main_config.get('auto_annotation', config.auto_annotation)
         config.refine_count = main_config.get('refine_count', config.refine_count)
         config.pass_count = main_config.get('pass_count', config.pass_count)

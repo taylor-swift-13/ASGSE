@@ -4,7 +4,7 @@
     "function_name": "foo",
     "debug": true,
     "only_loop": false,
-    "list_loop": false,
+    "recursive_loop": false,
     "auto_annotation": true,
     "refine_count": 3,
     "pass_count": 5,

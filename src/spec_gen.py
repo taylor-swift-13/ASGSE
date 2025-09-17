@@ -1076,7 +1076,7 @@ class SpecGenerator:
         require_str = self.function_info.require
 
 
-        if self.config.list_loop:
+        if self.config.recursive_loop:
             require_str = 'requires PLACE_HOLDER;\n ensures PLACE_HOLDER;'
        
 

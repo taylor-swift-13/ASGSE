@@ -29,8 +29,8 @@ Ensure emp
 /*@ Inv
     exists  pIp_pkv_l,    
     store_int_array(pIp->pkv, 10, pIp_pkv_l) &&
-    ((0 < pIp@pre->len) => (0 <= i && i <= pIp@pre->len)) &&
-((0 < pIp@pre->len) => (chksum == sum(&pIp_pkv_l[0], 0, i))) &&
+    ((0 < pIp@pre->len) => (0 <= i && i <= pIp->len)) &&
+((0 < pIp@pre->len) => (chksum == sum(&(pIp_pkv_l[0]), 0, i))) &&
 ((!(0 < pIp@pre->len)) => ((chksum == 0)&&(i == 0)&&(pIp == pIp@pre)&&(pIp@pre->len == pIp_len)&&(pIp@pre->chksum == pIp_chksum))) &&
 (pIp == pIp@pre) &&
 (pIp@pre->len == pIp_len) &&

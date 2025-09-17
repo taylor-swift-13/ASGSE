@@ -17,15 +17,15 @@ typedef struct __CheckCal
     requires \valid(pIp->pkv + (0..9));
     requires \forall integer i; 0 <= i < 10 ==> 0 <= pIp->pkv[i] <= 100;
     requires pIp->len <= 10;
-*/
-
+    */
+    
 void CheckCalFun(CheckCal *pIp){
         int i = 0;
         int chksum = 0;
 
         /*@ 
-          loop invariant (0 < \at(pIp,Pre)->len) ==> (0 <= i <= \at(pIp,Pre)->len);
-          loop invariant (0 < \at(pIp,Pre)->len) ==> (chksum == sum(&pIp->pkv[0], 0, i));
+          loop invariant (0 < \at(pIp,Pre)->len) ==> (0 <= i <= pIp->len);
+          loop invariant (0 < \at(pIp,Pre)->len) ==> (chksum == sum(&(pIp->pkv[0]), 0, i));
           loop invariant (!(0 < \at(pIp,Pre)->len)) ==> ((chksum == 0)&&(i == 0)&&(pIp == \at(pIp,Pre))&&(\at(pIp,Pre)->len == \at(pIp->len,Pre))&&(\at(pIp,Pre)->chksum == \at(pIp->chksum,Pre)));
           loop invariant pIp == \at(pIp,Pre);
           loop invariant \at(pIp,Pre)->len == \at(pIp->len,Pre);
