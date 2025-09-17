@@ -474,10 +474,11 @@ class FunctionProcessor:
             post_result = verifier.post_result 
             assert_result = verifier.assert_result 
             loop_result = verifier.loop_result
+            instance_result = verifier.instance_result
             syntax_error = verifier.syntax_error 
 
                         # Determine verification result
-            valid =  all(post_result) and all(loop_result)
+            valid =  all(post_result) and all(loop_result) and all(instance_result)
             syntax = syntax_error ==''
             satisfy =  all(assert_result)
 

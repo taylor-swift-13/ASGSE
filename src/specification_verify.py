@@ -15,9 +15,11 @@ class SpecVerifier:
         self.loop_error_list = []
         self.assert_error_list = []
         self.post_error_list = []
+        self.instance_error_list = []
         self.loop_result = []
         self.assert_result =[]
         self.post_result =[]
+        self.instance_result=[]
        
 
     def print_errors(self, error_list):
@@ -184,7 +186,10 @@ total_accuracy:  {total_accuracy:.2f}% ({sum(combined_results)}/{len(combined_re
         return [line for line in contents if line.strip().startswith("Goal Establishment of Invariant") or line.strip().startswith("Goal Preservation of Invariant")]
 
     def filter_post_condition(self, contents):
-        return [line for line in contents if line.strip().startswith("Goal Post-condition ")]
+        return [line for line in contents if line.strip().startswith("Goal Post-condition")]
+
+    def filter_instance(self,contents):
+        return [line for line in contents if line.strip().startswith("Goal Instance")]
     
 
     
@@ -225,7 +230,7 @@ total_accuracy:  {total_accuracy:.2f}% ({sum(combined_results)}/{len(combined_re
             spliter = '------------------------------------------------------------'
             content = result.stdout
             contents = content.split(spliter)
-            # print(content)
+            #print(content)
             
     
             filter_invs = self.filter_invariant(contents)
@@ -284,6 +289,26 @@ total_accuracy:  {total_accuracy:.2f}% ({sum(combined_results)}/{len(combined_re
                 print(self.post_result)
                 print('')
             # self.print_errors(self.post_error_list)
+
+            filter_instance = self.filter_instance(contents)
+            self.instance_result = self.check_target(filter_instance)
+            
+            for item in filter_instance:
+                if 'Valid' not in item:
+                    instance_error_msg = item
+                    error_location_msg, error_content_msg = self.extract_semantic_error(instance_error_msg)
+                    self.instance_error_list.append((instance_error_msg.strip(),error_location_msg, error_content_msg))
+            
+            if self.instance_result:
+                if self.logger:
+                    self.logger.info('Instance:')
+                    self.logger.info(self.instance_result)
+                    self.logger.info('')
+                else:
+                    print('Instance:')
+                    print(self.instance_result)
+                    print('')
+
 
 
 
